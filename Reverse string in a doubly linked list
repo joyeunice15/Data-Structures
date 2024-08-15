@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Node {
+    public:
+    string data;
+    Node* prev;
+    Node* next;
+};
+void insertEnd(Node**head, string data) {
+    Node* newNode = new Node();
+    newNode->data=data;
+    if (*head == NULL) {
+        *head = newNode;
+    } else {
+        Node* temp = *head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+        newNode->prev = temp;
+    }
+}
+Node* reverseList(Node* head) {
+    Node* current = head;
+    Node *temp=NULL;
+    while (current != NULL) {
+        temp=current->prev;
+        current->prev=current->next;
+        current->next=temp;
+        current=current->prev;
+    }
+    if(temp!=NULL)
+    {
+        head=temp->prev;
+    }
+    return head;
+}
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+int main() {
+    Node* head = NULL;
+    insertEnd(&head, "Hello");
+    insertEnd(&head, "World");
+    insertEnd(&head, "of");
+    insertEnd(&head, "Programming");
+    cout << "Original List: ";
+    printList(head);
+    head = reverseList(head);
+    cout << "Reversed List: ";
+    printList(head);
+    return 0;
+}
