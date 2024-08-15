@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int arr[50],n,i,s,c=0;
+    cout<<"enter the size of the array:";
+    cin>>n;
+    cout<<"enter "<<n<<" elements :"<<endl;
+    for(i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    cout<<"enter the element to be searched in the array :";
+    cin>>s;
+    for (i=0;i<n;i++)
+    {
+        if (s==arr[i])
+        {
+            c+=1;
+        }
+
+    }
+    if(c==0)
+    {
+        cout<<endl<<"element not found in the array";
+    }
+    else
+      cout<<endl<<"the element occurs "<<c<<" times in the array";
+
+    return 0;
+}
