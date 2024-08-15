@@ -1,0 +1,41 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class stacks{
+    public:
+    string data;
+    stacks*next;
+    stacks*top=NULL;
+
+
+void push(string data)
+{
+    stacks*temp=new stacks();
+    temp->data=data;
+    temp->next=top;
+    top=temp;
+}
+
+void display()
+{
+    stacks*temp=top;
+    while(temp!=NULL)
+    {
+        cout<<temp->data;
+        temp=temp->next;
+    }
+}
+
+    };
+int main()
+{
+    stacks st;
+    string a="geeksquiz";
+    for(char c:a)
+    {
+    st.push(string(1,c));
+    }
+    cout<<"output"<<endl;
+    st.display();
+    return 0;
+}
