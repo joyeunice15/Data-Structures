@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+class lifo
+{
+public:
+    char ele[50];
+    int top;
+
+void push(char e)
+{
+    top++;
+    ele[top]=e;
+}
+void print()
+{
+    for(int i=0;i<=top;i++)
+    {
+        cout<<ele[i];
+    }
+    cout<<endl;
+}
+void removestar(lifo &other)
+{
+    for(int i=0;i<=top;i++)
+    {
+        if (ele[i]=='*')
+        {
+            --other.top;
+        }
+        else
+        {
+            other.ele[++other.top]=ele[i];
+
+        }
+    }
+}
+};
+int main()
+{
+    lifo s1;
+    lifo s2;
+    s1.top=-1;
+    s2.top=-1;
+    string v;
+    cout<<"enter the string :";
+    cin>>v;
+    for(int i=0;i<v.size();i++)
+    {
+        s1.push(v[i]);
+    }
+    cout<<"original stack:"<<endl;
+    s1.print();
+    s1.removestar(s2);
+    cout<<"modified stack:"<<endl;
+    s2.print();
+}
