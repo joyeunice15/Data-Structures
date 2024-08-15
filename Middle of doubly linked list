@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+// Node structure for a doubly linked list
+class Node {
+    public:
+    int data;
+    Node* next;
+    Node* prev;
+};
+void inserts(Node**head,int data)
+{
+    Node*n=new Node();
+    n->data=data;
+    n->next=*head;
+    *head=n;
+}
+void print(Node*head)
+{
+    Node*current=head;
+    cout<<"elements:"<<endl;
+    while(current!=nullptr)
+    {
+        cout<<current->data<<endl;
+        current=current->next;
+    }
+}
+
+// Function to find the middle of the doubly linked list
+Node* findMiddle(Node* head) {
+    if (head == nullptr)
+        return nullptr;
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow;
+}
+
+int main() {
+   Node*head=nullptr;
+   inserts(&head,2);
+   inserts(&head,3);
+   inserts(&head,4);
+   inserts(&head,5);
+   inserts(&head,6);
+   print(head);
+
+Node* middle = findMiddle(head);
+    if (middle != nullptr) {
+        cout << "Middle of the list: " << middle->data << endl;
+    } else {
+        cout << "The list is empty." << endl;
+    }
+
+    return 0;
+}
