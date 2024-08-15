@@ -1,0 +1,77 @@
+#include<iostream>
+#include<string>
+using namespace std;
+void printStudents(string name[],int grade[] ,int n) {
+    for (int i = 0; i < n; ++i) {
+        cout << "Name: " << name[i]<<"  "<< "grades:"<<grade[i] << endl;
+    }
+}
+
+void selectionSortbyname(string name[],int grade[] ,int n) {
+    for (int i = 0; i < n - 1; ++i) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; ++j) {
+            if (name[j] < name[minIndex]) {
+                minIndex = j;
+            }
+        }
+        swap(name[i], name[minIndex]);
+        swap(grade[i],grade[minIndex]);
+
+    }
+
+}
+void selectionSortByGrade(string name[], int grade[], int n) {
+    for (int i = 0; i < n - 1; ++i) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; ++j) {
+            if (grade[j] < grade[minIndex]) {
+                minIndex = j;
+            }
+        }
+         swap(name[i], name[minIndex]);
+        swap(grade[i], grade[minIndex]);
+    }}
+
+int main()
+{
+    string name[10];
+    int grade[10];
+    int i,n,choice;
+    cout<<"enter the number of students:";
+    cin>>n;
+    for(i=0;i<n;i++)
+    {
+        cout<<"enter the name:";
+        cin>>name[i];
+        cout<<"enter the grade:";
+        cin>>grade[i];
+    }
+    for(i=0;i<n;i++)
+    {
+        cout<<name[i]<<","<<grade[i]<<endl;
+    }
+    cout<<"enter your choice:";
+    cin>>choice;
+    cout<<"1:sort by name";
+    cout<<"2:sort by grade";
+    switch (choice) {
+        case 1:
+            selectionSortbyname(name, grade, n);
+            break;
+
+        case 2:
+            selectionSortByGrade(name, grade, n);
+            break;
+
+        default:
+            cout << "Invalid choice" << endl;
+            return 1;
+    }
+
+
+    cout << "Sorted students:" << endl;
+    printStudents(name,grade,n);
+
+    return 0;
+}
